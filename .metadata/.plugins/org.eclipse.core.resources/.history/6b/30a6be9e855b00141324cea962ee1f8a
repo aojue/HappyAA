@@ -1,0 +1,31 @@
+package com.sina.weibo.happyaa;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.text.format.Time;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.TextView;
+
+
+public class NewActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.new_activity);
+        
+        TextView myTextView = (TextView)findViewById(R.id.textView4);      
+        Time time = new Time("GMT+8");       
+        time.setToNow();      
+        int year = time.year;      
+        int month = time.month;      
+        int day = time.monthDay;          
+        myTextView.setText(year +       
+                            "年 " + month +       
+                            "月 " + day +       
+                            "日 "); 
+    }
+    
+}
+

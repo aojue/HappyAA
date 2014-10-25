@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!-- When selected, use grey -->  
+  
+    <item android:drawable="@drawable/ic_lab"  
+  
+          android:state_selected="true" />  
+  
+    <!-- When not selected, use white-->  
+  
+    <item android:drawable="@drawable/title_bar.9" />  
+  
+
+</animation-list>

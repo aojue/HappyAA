@@ -1,0 +1,13 @@
+package com.sina.weibo.happyaa;
+
+public class TellHistory {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
