@@ -1,22 +1,90 @@
 package com.sina.weibo.happyaa;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 
 
 
 public class TellHistory extends Activity {
-
+	 private ListView lv;
+	
+	private List<Map<String,Object>> slist = new ArrayList<Map<String,Object>>();
+	
+	private String name[]={
+			"tianyin","huxianwei","liulu","wangjiawei","dsajdgsa","dsahgd","dgsahd","qwebswiw","werehw","28724"		
+	};
+	private String num[]={
+			"123445","213813","72974","72947829","4242974","82942493","443443","2479247","37827324","723724"
+	};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.tell_history);
+    	
+    	/*
+    	SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase("/data/data/com.sina.weibo.happyaa/database.db",null);
+        if(database == null) 
+        {
+        	String sql = "create table bigtable(id integer primary autoincrement, name text, time text";
+        	database.execSQL(sql);
+        }
+        else{
+        Cursor c = database.query("bigtable",null,null,null,null,null,null);
+        if(c.moveToFirst())
+        {
+        	for(int i=0;i<c.getCount();i++){
+        		c.move(i);
+        		name[i] = c.getString(1);
+        		num[i]=c.getString(2);
+        	}
+        		
+        }
+        }
+        */
+    	super.onCreate(savedInstanceState);
+        setContentView(R.layout.list_view);
+        
+       lv = (ListView) findViewById(R.id.ls_message);/*定义一个动态数组*/
+       for(int i=0;i<name.length;i++){
+    	   Map<String,Object> map=new HashMap<String,Object>();
+    	   map.put("usepic", R.drawable.copyright);
+    	   map.put("usename", name[i]);
+    	   map.put("usenum", num[i]);
+    	   slist.add(map);
+       }
+       ListAdapter listadapter=new SimpleAdapter(this,slist,R.layout.tell_history,
+    	       new String[]{"usepic","usename","usenum"},
+    		   new int[]{R.id.tellpic,R.id.tellname,R.id.telldate});
+       lv.setAdapter(listadapter);
+       
+       lv.setOnItemClickListener(new  OnItemClickListener() {
+    	   @Override
+           public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                   long arg3) {
+               setTitle("你点击了第"+arg2+"行");//设置标题栏显示点击的行 
+               Intent intent = new Intent(TellHistory.this, TableActivity.class);
+				//intent.setClass(MainActivity.this, NewActivity.class);
+				startActivity(intent);
+               
+           }
+       });
+
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

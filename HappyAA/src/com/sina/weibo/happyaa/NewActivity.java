@@ -11,6 +11,7 @@ import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class NewActivity extends Activity {
@@ -46,9 +47,14 @@ public class NewActivity extends Activity {
 			        EditText editText2 =(EditText)findViewById(R.id.editText2);  
 			        Kouhao=editText2.getText().toString(); 
 			       
-				Intent intent = new Intent(NewActivity.this, TellHistory.class);
+			        if(Title.equals("")||Kouhao.equals("")){
+			        	Toast.makeText(NewActivity.this,"请输入活动信息",Toast.LENGTH_SHORT).show();
+			        }
+			        else{
+			        Intent intent = new Intent(NewActivity.this, TellHistory.class);
 				//intent.setClass(MainActivity.this, NewActivity.class);
-				startActivity(intent);
+			        startActivity(intent);
+			        }
 			}
         	
         });
