@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/Linearlayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" 
+        tools:context=".CreatTell" 
+    	android:background="@drawable/ic_lb_a">
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10" 
+            android:hint="讨论组名称"
+            android:inputType="text"
+            android:textSize="23sp"
+            android:layout_gravity="center_vertical">
+
+            <requestFocus />
+        </EditText>
+        
+        <SearchView
+            android:id="@+id/searchView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">            
+        </SearchView>
+        
+        <ListView
+                android:id="@+id/ls_people"
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:cacheColorHint="#00000000"
+        		android:dividerHeight="0dp"
+        		android:focusableInTouchMode="true"  
+        		android:background="@drawable/ic_lb_a">
+            </ListView>
+        
+    </LinearLayout>

@@ -11,7 +11,7 @@
         android:layout_marginBottom="0dp"
         android:cacheColorHint="#00000000"
         android:dividerHeight="0dp"
-        android:background="@drawable/ic_lb_a"
+        android:background="@drawable/ic_lb_h"
         android:focusableInTouchMode="true" />
 
 </LinearLayout>
