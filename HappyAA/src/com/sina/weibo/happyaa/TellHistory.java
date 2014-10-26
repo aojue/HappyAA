@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -28,6 +27,10 @@ public class TellHistory extends Activity {
 	
 	private List<Map<String,Object>> slist = new ArrayList<Map<String,Object>>();
 	
+	public List<String> users = new ArrayList<String>();
+	public List<String> chats = new ArrayList<String>();
+	
+	
 	private String name[]={
 			"tianyin","huxianwei","liulu","wangjiawei","dsajdgsa","dsahgd","dgsahd","qwebswiw","werehw","28724"		
 	};
@@ -37,14 +40,8 @@ public class TellHistory extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
     	
-    	/*
-    	SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase("/data/data/com.sina.weibo.happyaa/database.db",null);
-        if(database == null) 
-        {
-        	String sql = "create table bigtable(id integer primary autoincrement, name text, time text";
-        	database.execSQL(sql);
-        }
-        else{
+    	/**
+    	final SQLiteDatabase database = SQLiteDatabase.openOrCreateDatabase("/data/com.sina.weibo.happyaa/database.db",null);
         Cursor c = database.query("bigtable",null,null,null,null,null,null);
         if(c.moveToFirst())
         {
@@ -55,8 +52,8 @@ public class TellHistory extends Activity {
         	}
         		
         }
-        }
         */
+        
     	super.onCreate(savedInstanceState);
         setContentView(R.layout.list_view);
         
@@ -78,6 +75,18 @@ public class TellHistory extends Activity {
            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                    long arg3) {
                setTitle("你点击了第"+arg2+"行");//设置标题栏显示点击的行 
+              /** String sql = name[arg2];
+               Cursor c = database.query(sql,null,null,null,null,null,null);
+               if(c.moveToFirst())
+               {
+               	for(int i=0;i<c.getCount();i++){
+               		c.move(i);
+               		users.add(c.getString(1));
+               		chats.add(c.getString(2));
+               	}
+               		
+               }*/
+               
                Intent intent = new Intent(TellHistory.this, TableActivity.class);
 				//intent.setClass(MainActivity.this, NewActivity.class);
 				startActivity(intent);
